@@ -1,18 +1,18 @@
 import { FastifyInstance } from 'fastify'
-import { z } from 'zod'
 import axios from 'axios'
+import { z } from 'zod'
 import { prisma } from '../lib/prisma'
 
 export async function authRoutes(app: FastifyInstance) {
-  app.post('/register', async (req) => {
+  app.post('/register', async (request) => {
     const bodySchema = z.object({
       code: z.string(),
     })
 
-    const { code } = bodySchema.parse(req.body)
+    const { code } = bodySchema.parse(request.body)
 
     const accessTokenResponse = await axios.post(
-      'https://github.com/oauth/access_token',
+      'https://github.com/login/oauth/access_token',
       null,
       {
         params: {
