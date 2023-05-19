@@ -26,6 +26,7 @@ function MediaPicker() {
         type="file" 
         id="media" 
         accept="image/*"
+        name="coverUrl"
         className="invisible h-0 w-0"
       />
 
